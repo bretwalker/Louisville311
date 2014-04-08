@@ -124,22 +124,29 @@ def main(argv):
     logging.basicConfig(filename='/tmp/311.log', level=logging.INFO)
     start_num = 0
     sleep = 2
+    email = None
     
     try:
-       opts, args = getopt.getopt(argv,"hn:s:",["startnum=","sleep="])
+       opts, args = getopt.getopt(argv,"hn:e:s:",["startnum=","sleep=","email="])
     except getopt.GetoptError:
-       print '311.py -n <start_number> -s <sleep_time>'
+       print '311.py -n <start_number> -s <sleep_time> -e <contact email>'
        sys.exit(2)
     for opt, arg in opts:
        if opt == '-h':
-          print '311.py -n <start_number> -s <sleep_time>'
+          print '311.py -n <start_number> -s <sleep_time> -e <contact email>'
           sys.exit()
        elif opt in ("-n", "--startnum"):
           start_num = arg
        elif opt in ("-s", "--sleep"):
           sleep = arg
+       elif opt in ("-e", "--email"):
+           email = arg
+
+    if not email:
+        print 'Must supply email with -e argument. Give Metro someone to contact in case of a problem.'
+        sys.exit(2)
     
-    updater = ThreeOneOneScraper('youremail@here.com', int(start_num), sleep)
+    updater = ThreeOneOneScraper(email, int(start_num), sleep)
     updater.update()
 
 if __name__ == "__main__":
