@@ -122,7 +122,7 @@ class ThreeOneOneScraper():
                 
 def main(argv):
     logging.basicConfig(filename='/tmp/311.log', level=logging.INFO)
-    start_num = 0
+    start_num = None
     sleep = 2
     email = None
     
@@ -142,6 +142,10 @@ def main(argv):
        elif opt in ("-e", "--email"):
            email = arg
 
+    if not start_num:
+        print 'Must supply starting record number with -n argument.'
+        sys.exit(2)
+        
     if not email:
         print 'Must supply email with -e argument. Give Metro someone to contact in case of a problem.'
         sys.exit(2)
