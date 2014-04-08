@@ -116,8 +116,8 @@ class ThreeOneOneScraper():
                     consecutive_failures = 0
                     writer.writerow(request_results)
                 
-                if consecutive_failures == 5:
-                    logging.info('Got 5 consecutive failures. Must be at the end.')
+                if consecutive_failures == 15:
+                    logging.info('Got 15 consecutive failures. Must be at the end.')
                     return
                 
 def main(argv):
