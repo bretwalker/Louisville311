@@ -10,4 +10,4 @@ Louisville, Ky. 311 Site Scraper
 ## Usage
 **311.py** **-n** starting request number **-s** sleep seconds between requests **-e** email of scraper
 
-A good starting request number as of 4/7 is 4289409.
+A good starting request number as of 4/7/2014 is 4289409.
